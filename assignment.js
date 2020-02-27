@@ -141,9 +141,11 @@ assert.equal(nextLabel("exit"),  "exit-3")
 // a new function for each label to be seauenced
 
 function labelMaker(label) {
-  // START
-  // ...
-  // END
+  return function(newLabel) {
+  	let count = 0
+  	return label + "-" + (count)
+  	count ++
+  }
 }
 
 let nextEntryLabel = labelMaker("entry")
