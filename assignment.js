@@ -81,15 +81,14 @@ assert.equal(sum, 55)
 //
 // fix the `for` line of this code
 
-// WRONG TYPE ERROE
 
 let result = []
 //START
-for (let i in [1,2,3,4]) {
+for (let i = 1; i<=4; i++) {
 // END
   result.push(3*i)
 }
-assert.equal(result, [3,6,9,12])
+assert.deepEqual(result, [3,6,9,12])
 
 
 ///////////////// Section 4 ///////////////////////////////////////////
@@ -141,12 +140,10 @@ assert.equal(nextLabel("exit"),  "exit-3")
 // Fix that by writing a function that generates
 // a new function for each label to be seauenced
 
-//I KNOW THE CODE DOESN'T WORK
 function labelMaker(label) {
   // START
   let count = 0
   let result = label + "-" + count
-  let count = count + 1
   return result
   // END
 }
@@ -179,7 +176,6 @@ if (false) { // move me down to the next section when the one above is complete
 // they don't pass it when you call that function, the parameter
 //  will have the value `undefined`
 
-//HAVEN'T GOTTEN HERE YET
 function labelMaker1(label) {
   // START
   // ...
