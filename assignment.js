@@ -113,9 +113,7 @@ for (let city in  populations) {
   // END
 }
 assert.equal(total, 25_145_561)
-console.log(total)
 
-if (false) { // move me down to the next section when the one above is complete
 
 
 ///////////////// Section 5 ///////////////////////////////////////////
@@ -134,6 +132,7 @@ assert.equal(nextLabel("entry"), "entry-1")
 assert.equal(nextLabel("entry"), "entry-2")
 assert.equal(nextLabel("exit"),  "exit-3")
 
+if (false) { // move me down to the next section when the one above is complete
 
 ///////////////// Section 6 ///////////////////////////////////////////
 //
