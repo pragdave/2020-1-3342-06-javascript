@@ -122,17 +122,14 @@ assert.equal(total, 25_145_561)
 
 let count = 0
 function nextLabel(label) {
-  // START
-  // ...
-  // END
+	count++
+  	return label + "-" + (count-1)
 }
 
 assert.equal(nextLabel("entry"), "entry-0")
 assert.equal(nextLabel("entry"), "entry-1")
 assert.equal(nextLabel("entry"), "entry-2")
 assert.equal(nextLabel("exit"),  "exit-3")
-
-if (false) { // move me down to the next section when the one above is complete
 
 ///////////////// Section 6 ///////////////////////////////////////////
 //
@@ -157,6 +154,8 @@ assert.equal(nextEntryLabel(), "entry-1")
 assert.equal(nextExitLabel(),  "exit-0")
 assert.equal(nextEntryLabel(), "entry-2")
 assert.equal(nextExitLabel(),  "exit-1")
+
+if (false) { // move me down to the next section when the one above is complete
 
 ///////////////// Section 7 ///////////////////////////////////////////
 //
