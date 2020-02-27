@@ -78,7 +78,6 @@ for (let i = 1; i <= 10; i++) {
 // END
 assert.equal(sum, 55)
 
-if (false) { // move me down to the next section when the one above is complete
 
 ///////////////// Section 3 ///////////////////////////////////////////
 //
@@ -86,14 +85,14 @@ if (false) { // move me down to the next section when the one above is complete
 
 let result = []
 //START
-for (let i in [1,2,3,4]) {
+for (let i of [1,2,3,4]) {
 // END
   result.push(3*i)
 }
 assert.deepEqual(result, [3,6,9,12])
 
 
-
+if (false) { // move me down to the next section when the one above is complete
 
 ///////////////// Section 4 ///////////////////////////////////////////
 //
