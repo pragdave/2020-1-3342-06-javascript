@@ -90,7 +90,7 @@ for (let i in [1,2,3,4]) {
 // END
   result.push(3*i)
 }
-assert.equal(result, [3,6,9,12])
+assert.deepEqual(result, [3,6,9,12])
 
 
 
