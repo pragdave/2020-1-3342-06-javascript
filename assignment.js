@@ -89,6 +89,8 @@ for (let i of [1,2,3,4]) { //i = 1; i < 5; i++
 }
 assert.equal(result, [3,6,9,12])
 
+if (false) { // move me down to the next section when the one above is complete
+
 ///////////////// Section 4 ///////////////////////////////////////////
 //
 // fix the body of the loop
@@ -105,12 +107,10 @@ let populations = {
 let total = 0
 for (let city in  populations) {
   //START
-  total += populations.city
+  total += populations[city]
   // END
 }
 assert.equal(total, 25_145_561)
-
-if (false) { // move me down to the next section when the one above is complete
 
 ///////////////// Section 5 ///////////////////////////////////////////
 //
@@ -119,7 +119,9 @@ if (false) { // move me down to the next section when the one above is complete
 let count = 0
 function nextLabel(label) {
   // START
-  // ...
+  let counter = count
+  count++
+  return label + "-" + counter
   // END
 }
 
@@ -127,7 +129,6 @@ assert.equal(nextLabel("entry"), "entry-0")
 assert.equal(nextLabel("entry"), "entry-1")
 assert.equal(nextLabel("entry"), "entry-2")
 assert.equal(nextLabel("exit"),  "exit-3")
-
 
 ///////////////// Section 6 ///////////////////////////////////////////
 //
@@ -140,7 +141,7 @@ assert.equal(nextLabel("exit"),  "exit-3")
 
 function labelMaker(label) {
   // START
-  // ...
+  return label
   // END
 }
 
@@ -152,6 +153,8 @@ assert.equal(nextEntryLabel(), "entry-1")
 assert.equal(nextExitLabel(),  "exit-0")
 assert.equal(nextEntryLabel(), "entry-2")
 assert.equal(nextExitLabel(),  "exit-1")
+
+
 
 ///////////////// Section 7 ///////////////////////////////////////////
 //
@@ -171,7 +174,7 @@ assert.equal(nextExitLabel(),  "exit-1")
 
 function labelMaker1(label) {
   // START
-  // ...
+  return nextLabel(label)
   // END
 }
 
@@ -186,5 +189,6 @@ assert.equal(nextEntryLabel1(),   "entry-100")
 assert.equal(nextExitLabel1(),    "exit-201")
 assert.equal(nextExitLabel1(0),   "exit-0")
 assert.equal(nextExitLabel1(),    "exit-1")
+
 
 }           // end of `if (false)`
