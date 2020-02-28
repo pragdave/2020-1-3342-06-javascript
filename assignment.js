@@ -147,9 +147,9 @@ function labelMaker(label) {
     // START
     let count = 0;
     return function() {
-            return label + '-' + count++;
-        }
-        // END
+      return label + '-' + count++;
+    }
+    // END
 }
 
 let nextEntryLabel = labelMaker("entry")
@@ -182,11 +182,11 @@ function labelMaker1(label) {
     // START
     let count = 0;
     return function(num) {
-            if (num != undefined)
-                count = num;
-            return label + '-' + count++;
-        }
-        // END
+      if (num != undefined)
+        count = num;
+      return label + '-' + count++;
+    }
+    // END
 }
 
 let nextEntryLabel1 = labelMaker1("entry")
