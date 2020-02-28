@@ -87,7 +87,7 @@ for (let i of [1,2,3,4]) { //i = 1; i < 5; i++
 // END
   result.push(3*i)
 }
-assert.equal(result, [3,6,9,12])
+assert.deepEqual(result, [3,6,9,12])
 
 if (false) { // move me down to the next section when the one above is complete
 
