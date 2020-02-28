@@ -38,21 +38,21 @@ You can change the let statements, but not the assert. (My intent here would be
 for you to make the test pass my initializing b to 5.
 */
 
-const assert = require('assert').strict   // ignore these two. they just
-Error.stackTraceLimit = 2                 // set up the environment
+const assert = require('assert').strict // ignore these two. they just
+Error.stackTraceLimit = 2 // set up the environment
 
 ///////////////// Section 1 ///////////////////////////////////////////
 //
 // make the assertions pass
 
 let a = 5
-// START
-let b
-let c
-let d
-let e
-let f
-// END
+    // START
+let b = 10
+let c = -11
+let d = "hawaii"
+let e = 99
+let f = 0
+    // END
 
 assert.equal(a + b, 15)
 assert.equal(b + c, -1)
@@ -62,10 +62,9 @@ assert.equal(d + a + f, "hawaii50")
 
 // add parentheses to the first parameter to make this pass
 // START
-assert.equal(d + b + c, "hawaii-1")
-//
+assert.equal(d + (b + c), "hawaii-1")
+    // END
 
-if (false) { // move me down to the next section when the one above is complete
 
 ///////////////// Section 2 ///////////////////////////////////////////
 //
@@ -74,7 +73,7 @@ if (false) { // move me down to the next section when the one above is complete
 // START
 let sum = 0
 for (let i = 1; i <= 10; i++) {
-  let sum = sum + i
+    sum = sum + i
 }
 // END
 assert.equal(sum, 55)
@@ -85,12 +84,12 @@ assert.equal(sum, 55)
 // fix the `for` line of this code
 
 let result = []
-//START
-for (let i in [1,2,3,4]) {
-// END
-  result.push(3*i)
+    //START
+for (let i of[1, 2, 3, 4]) {
+    // END
+    result.push(3 * i)
 }
-assert.deepEqual(result, [3,6,9,12])
+assert.deepEqual(result, [3, 6, 9, 12])
 
 
 
@@ -100,19 +99,19 @@ assert.deepEqual(result, [3,6,9,12])
 // fix the body of the loop
 
 let populations = {
-  houston:     2_099_451,
-  san_antonio: 1_327_407,
-  dallas:      1_197_816,
-  austin:        790_390,
-  fort_worth:    741_206,
-  rest:       18_989_291,
+    houston: 2_099_451,
+    san_antonio: 1_327_407,
+    dallas: 1_197_816,
+    austin: 790_390,
+    fort_worth: 741_206,
+    rest: 18_989_291,
 }
 
 let total = 0
-for (let city in  populations) {
-  //START
-  total += populations.city
-  // END
+for (let city in populations) {
+    //START
+    total += populations[city];
+    // END
 }
 assert.equal(total, 25_145_561)
 
@@ -122,16 +121,17 @@ assert.equal(total, 25_145_561)
 // write the body of the following function
 
 let count = 0
+
 function nextLabel(label) {
-  // START
-  // ...
-  // END
+    // START
+    return label + '-' + count++;
+    // END
 }
 
 assert.equal(nextLabel("entry"), "entry-0")
 assert.equal(nextLabel("entry"), "entry-1")
 assert.equal(nextLabel("entry"), "entry-2")
-assert.equal(nextLabel("exit"),  "exit-3")
+assert.equal(nextLabel("exit"), "exit-3")
 
 
 ///////////////// Section 6 ///////////////////////////////////////////
@@ -144,19 +144,23 @@ assert.equal(nextLabel("exit"),  "exit-3")
 // a new function for each label to be seauenced
 
 function labelMaker(label) {
-  // START
-  // ...
-  // END
+    // START
+    let count = 0;
+    return function() {
+            return label + '-' + count++;
+        }
+        // END
 }
 
 let nextEntryLabel = labelMaker("entry")
-let nextExitLabel  = labelMaker("exit")
+let nextExitLabel = labelMaker("exit")
 
 assert.equal(nextEntryLabel(), "entry-0")
 assert.equal(nextEntryLabel(), "entry-1")
-assert.equal(nextExitLabel(),  "exit-0")
+assert.equal(nextExitLabel(), "exit-0")
 assert.equal(nextEntryLabel(), "entry-2")
-assert.equal(nextExitLabel(),  "exit-1")
+assert.equal(nextExitLabel(), "exit-1")
+
 
 ///////////////// Section 7 ///////////////////////////////////////////
 //
@@ -175,21 +179,28 @@ assert.equal(nextExitLabel(),  "exit-1")
 //  will have the value `undefined`
 
 function labelMaker1(label) {
-  // START
-  // ...
-  // END
+    // START
+    let count = 0;
+    return function(num) {
+            if (num != undefined)
+                count = num;
+            return label + '-' + count++;
+        }
+        // END
 }
 
 let nextEntryLabel1 = labelMaker1("entry")
-let nextExitLabel1  = labelMaker1("exit")
+let nextExitLabel1 = labelMaker1("exit")
 
-assert.equal(nextEntryLabel1(),   "entry-0")
-assert.equal(nextEntryLabel1(),   "entry-1")
+assert.equal(nextEntryLabel1(), "entry-0")
+assert.equal(nextEntryLabel1(), "entry-1")
 assert.equal(nextEntryLabel1(99), "entry-99")
 assert.equal(nextExitLabel1(200), "exit-200")
-assert.equal(nextEntryLabel1(),   "entry-100")
-assert.equal(nextExitLabel1(),    "exit-201")
-assert.equal(nextExitLabel1(0),   "exit-0")
-assert.equal(nextExitLabel1(),    "exit-1")
+assert.equal(nextEntryLabel1(), "entry-100")
+assert.equal(nextExitLabel1(), "exit-201")
+assert.equal(nextExitLabel1(0), "exit-0")
+assert.equal(nextExitLabel1(), "exit-1")
 
-}           // end of `if (false)`
+if (false) { // move me down to the next section when the one above is complete
+
+} // end of `if (false)`
