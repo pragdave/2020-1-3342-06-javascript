@@ -83,13 +83,11 @@ assert.equal(sum, 55)
 
 let result = []
 //START
-for (let i of [1,2,3,4]) { //i = 1; i < 5; i++
+for (let i of [1,2,3,4]) { 
 // END
   result.push(3*i)
 }
 assert.deepEqual(result, [3,6,9,12])
-
-if (false) { // move me down to the next section when the one above is complete
 
 ///////////////// Section 4 ///////////////////////////////////////////
 //
@@ -141,7 +139,11 @@ assert.equal(nextLabel("exit"),  "exit-3")
 
 function labelMaker(label) {
   // START
-  return label
+  let num = 0;
+  return function(){
+    label + "-" + num
+    num++
+  }
   // END
 }
 
@@ -154,7 +156,7 @@ assert.equal(nextExitLabel(),  "exit-0")
 assert.equal(nextEntryLabel(), "entry-2")
 assert.equal(nextExitLabel(),  "exit-1")
 
-
+if (false) { // move me down to the next section when the one above is complete
 
 ///////////////// Section 7 ///////////////////////////////////////////
 //
@@ -174,7 +176,14 @@ assert.equal(nextExitLabel(),  "exit-1")
 
 function labelMaker1(label) {
   // START
-  return nextLabel(label)
+  let num = 0
+  return function(x){
+    if(x != undefined){
+      num = x
+    }
+    label + "-" + num
+    num++
+  }
   // END
 }
 
