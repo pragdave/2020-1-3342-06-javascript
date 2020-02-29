@@ -120,7 +120,7 @@ let count = 0
 function nextLabel(label) {
   //START
   let result = label + "-" + count
-  count = count + 1
+  count ++
   return result
   // END
 }
@@ -142,21 +142,11 @@ assert.equal(nextLabel("exit"),  "exit-3")
 
 function labelMaker(label) {
   // START
-  let entryCount = 0
-  let exitCount = 0
-  let strLabel = label
-  return function(strlabel)
+  let count = 0
+  return function()
   {
-    if (label == "exit")
-    {
-      exitCount = exitCount + 1
-      return "exit-" + (exitCount-1)
-    }
-    else
-    {
-      entryCount = entryCount + 1
-      return "entry-" + (entryCount-1)
-    }
+    count++
+    return label + "-" + (count-1)
   }
   // END
 }
@@ -188,31 +178,16 @@ assert.equal(nextExitLabel(),  "exit-1")
 
 function labelMaker1(label) {
   // START
-  let entryCount = 0
-  let exitCount = 0
-  let strLabel = label
+  let count = 0
   return function(newCount)
   {
-    if (label == "exit")
-    {
-      if (newCount==null){
-        exitCount = exitCount + 1
-      }
-      else {
-        exitCount = newCount + 1
-      }
-      return "exit-" + (exitCount-1)
+    if (newCount==null){
+      count++
     }
-    else
-    {
-      if (newCount==null){
-        entryCount = entryCount + 1
-      }
-      else{
-        entryCount = newCount + 1
-      }
-      return "entry-" + (entryCount-1)
+    else {
+      count = newCount + 1
     }
+    return label + "-" + (count-1)
   }
   // END
 }
