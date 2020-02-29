@@ -142,9 +142,22 @@ assert.equal(nextLabel("exit"),  "exit-3")
 
 function labelMaker(label) {
   // START
-  let count = 0
-  let result = label + "-" + count
-  return result
+  let entryCount = 0
+  let exitCount = 0
+  let strLabel = label
+  return function(strlabel)
+  {
+    if (label == "exit")
+    {
+      exitCount = exitCount + 1
+      return "exit-" + (exitCount-1)
+    }
+    else
+    {
+      entryCount = entryCount + 1
+      return "entry-" + (entryCount-1)
+    }
+  }
   // END
 }
 
@@ -156,9 +169,6 @@ assert.equal(nextEntryLabel(), "entry-1")
 assert.equal(nextExitLabel(),  "exit-0")
 assert.equal(nextEntryLabel(), "entry-2")
 assert.equal(nextExitLabel(),  "exit-1")
-
-if (false) { // move me down to the next section when the one above is complete
-
 
 ///////////////// Section 7 ///////////////////////////////////////////
 //
@@ -178,7 +188,32 @@ if (false) { // move me down to the next section when the one above is complete
 
 function labelMaker1(label) {
   // START
-  // ...
+  let entryCount = 0
+  let exitCount = 0
+  let strLabel = label
+  return function(newCount)
+  {
+    if (label == "exit")
+    {
+      if (newCount==null){
+        exitCount = exitCount + 1
+      }
+      else {
+        exitCount = newCount + 1
+      }
+      return "exit-" + (exitCount-1)
+    }
+    else
+    {
+      if (newCount==null){
+        entryCount = entryCount + 1
+      }
+      else{
+        entryCount = newCount + 1
+      }
+      return "entry-" + (entryCount-1)
+    }
+  }
   // END
 }
 
@@ -194,4 +229,7 @@ assert.equal(nextExitLabel1(),    "exit-201")
 assert.equal(nextExitLabel1(0),   "exit-0")
 assert.equal(nextExitLabel1(),    "exit-1")
 
-}           // end of `if (false)`
+      // end of `if (false)`
+
+
+//if (false) // move me down to the next section when the one above is complete
