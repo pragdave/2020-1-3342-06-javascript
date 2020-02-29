@@ -47,11 +47,11 @@ Error.stackTraceLimit = 2                 // set up the environment
 
 let a = 5
 // START
-let b
-let c
-let d
-let e
-let f
+let b = 10
+let c = -6
+let d = "hawaii"
+let e = 99
+let f = 0
 // END
 
 assert.equal(a + b, 15)
