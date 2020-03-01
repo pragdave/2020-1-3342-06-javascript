@@ -89,8 +89,7 @@ for (let i of [1,2,3,4]) {
 // END
   result.push(3*i)
 }
-console.log(result)
-//assert.equal(result, [3,6,9,12])
+assert.equal(result, [3,6,9,12])
 
 
 ///////////////// Section 4 ///////////////////////////////////////////
