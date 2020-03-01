@@ -65,8 +65,6 @@ assert.equal(d + a + f, "hawaii50")
 assert.equal(d + (b + c), "hawaii-1")
 //
 
-if (false) { // move me down to the next section when the one above is complete
-
 ///////////////// Section 2 ///////////////////////////////////////////
 //
 // fix the declation(s) in this code (but continue to use let)
@@ -74,11 +72,12 @@ if (false) { // move me down to the next section when the one above is complete
 // START
 let sum = 0
 for (let i = 1; i <= 10; i++) {
-  let sum = sum + i
+  sum = sum + i
 }
 // END
 assert.equal(sum, 55)
 
+if (false) { // move me down to the next section when the one above is complete
 
 ///////////////// Section 3 ///////////////////////////////////////////
 //
