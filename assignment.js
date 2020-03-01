@@ -47,11 +47,11 @@ Error.stackTraceLimit = 2                 // set up the environment
 
 let a = 5
 // START
-let b = 10
-let c = -11
-let d = "hawaii"
-let e = 99
-let f = 0
+let b = 10 //initialized b to 10
+let c = -11 //initialized c to-11
+let d = "hawaii" //initialized d to "hawaii"
+let e = 99 //initialized e to 99
+let f = 0 //initialized f to 0
 // END
 
 assert.equal(a + b, 15)
@@ -62,9 +62,8 @@ assert.equal(d + a + f, "hawaii50")
 
 // add parentheses to the first parameter to make this pass
 // START
-assert.equal(d + (b + c), "hawaii-1")
+assert.equal(d + (b + c), "hawaii-1") //add parantheses around b + c to do integer add first
 // END
-
 
 ///////////////// Section 2 ///////////////////////////////////////////
 //
@@ -73,7 +72,7 @@ assert.equal(d + (b + c), "hawaii-1")
 // START
 let sum = 0
 for (let i = 1; i <= 10; i++) {
-  sum = sum + i
+  sum = sum + i //took out "let" to stop redeclaration
 }
 // END
 assert.equal(sum, 55)
@@ -85,11 +84,13 @@ assert.equal(sum, 55)
 
 let result = []
 //START
-for (let i of [1,2,3,4]) {
+for (let i of [1,2,3,4]) { //changed in to of to multiple values instead of keys/indexes
 // END
   result.push(3*i)
 }
-assert.equal(result, [3,6,9,12])
+assert.deepEqual(result, [3,6,9,12])
+
+
 
 
 ///////////////// Section 4 ///////////////////////////////////////////
@@ -108,7 +109,7 @@ let populations = {
 let total = 0
 for (let city in  populations) {
   //START
-  total += populations[city]
+  total += populations[city] //put brackets around city 
   // END
 }
 assert.equal(total, 25_145_561)
@@ -121,9 +122,9 @@ assert.equal(total, 25_145_561)
 let count = 0
 function nextLabel(label) {
   // START
-    label = label + "-" + count
-    count++;
-    return label
+  label = label + "-" + count //adds count to label with a dash because of -0
+  count++;  //increment count
+  return label //return the new label
   // END
 }
 
@@ -131,6 +132,7 @@ assert.equal(nextLabel("entry"), "entry-0")
 assert.equal(nextLabel("entry"), "entry-1")
 assert.equal(nextLabel("entry"), "entry-2")
 assert.equal(nextLabel("exit"),  "exit-3")
+
 
 ///////////////// Section 6 ///////////////////////////////////////////
 //
@@ -143,11 +145,11 @@ assert.equal(nextLabel("exit"),  "exit-3")
 
 function labelMaker(label) {
   // START
-  let count = -1
-    return function(){
-      count++
-      return label + "-" + count
-    }
+  let count = -1  //initialize count to -1 to increment to 0
+  return function(){ //returns function with no parameters taken
+    count++ //increment count
+    return label + "-" + count //add count with dash to label and return
+  }
   // END
 }
 
@@ -159,7 +161,6 @@ assert.equal(nextEntryLabel(), "entry-1")
 assert.equal(nextExitLabel(),  "exit-0")
 assert.equal(nextEntryLabel(), "entry-2")
 assert.equal(nextExitLabel(),  "exit-1")
-
 
 ///////////////// Section 7 ///////////////////////////////////////////
 //
@@ -179,14 +180,14 @@ assert.equal(nextExitLabel(),  "exit-1")
 
 function labelMaker1(label) {
   // START
-    let count = -1
-      return function(para){
-        if(para == undefined)
-          count++
-        else
-          count = para
-        return label + "-" + count
-      }
+  let count = -1  //initialize count to -1 to increment to 0
+  return function(para){ //returns function that takes in parameter
+    if(para == undefined) //checks if parameter is undefined (none passed in)
+      count++ //incremement if there's no parameter
+    else
+      count = para  //initialize count to whatever was passed in
+    return label + "-" + count  //add count and dash to label and return
+  }
   // END
 }
 
