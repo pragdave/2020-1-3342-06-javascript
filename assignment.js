@@ -83,13 +83,14 @@ assert.equal(sum, 55)
 //
 // fix the `for` line of this code
 
-// let result = []
-// //START
-// for (let i of [1,2,3,4]) {
-// // END
-//   result.push(3*i)
-// }
-// assert.equal(result, [3,6,9,12])
+let result = []
+//START
+for (let i of [1,2,3,4]) {
+// END
+  result.push(3*i)
+}
+console.log(result)
+//assert.equal(result, [3,6,9,12])
 
 
 ///////////////// Section 4 ///////////////////////////////////////////
