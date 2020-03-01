@@ -93,7 +93,7 @@ for (let i of [1,2,3,4]) {
 assert.deepEqual(result, [3,6,9,12])
 
 
-if (false) { // move me down to the next section when the one above is complete
+
 
 ///////////////// Section 4 ///////////////////////////////////////////
 //
@@ -111,12 +111,12 @@ let populations = {
 let total = 0
 for (let city in  populations) {
   //START
-  total += populations.city
+  total += populations[city]
   // END
 }
 assert.equal(total, 25_145_561)
 
-
+if (false) { // move me down to the next section when the one above is complete
 ///////////////// Section 5 ///////////////////////////////////////////
 //
 // write the body of the following function
