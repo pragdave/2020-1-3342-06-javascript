@@ -151,8 +151,6 @@ assert.equal(nextExitLabel(),  "exit-0")
 assert.equal(nextEntryLabel(), "entry-2")
 assert.equal(nextExitLabel(),  "exit-1")
 
-if (false) { // move me down to the next section when the one above is complete
-
 ///////////////// Section 7 ///////////////////////////////////////////
 //
 // The client likes your labelMaker function,
@@ -171,7 +169,12 @@ if (false) { // move me down to the next section when the one above is complete
 
 function labelMaker1(label) {
   // START
-  // ...
+  let count = 0;
+  return (entry) => {
+    if(entry >= 0)
+      count = entry;
+    return label + '-' + count++;
+  }
   // END
 }
 
@@ -187,4 +190,5 @@ assert.equal(nextExitLabel1(),    "exit-201")
 assert.equal(nextExitLabel1(0),   "exit-0")
 assert.equal(nextExitLabel1(),    "exit-1")
 
+if (false) { // move me down to the next section when the one above is complete
 }           // end of `if (false)`
