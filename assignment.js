@@ -40,7 +40,7 @@ for you to make the test pass my initializing b to 5.
 
 const assert = require('assert').strict   // ignore these two. they just
 Error.stackTraceLimit = 2                 // set up the environment
-
+// Eli Segovia -- 47622670 -- GitHub: elisego45
 ///////////////// Section 1 ///////////////////////////////////////////
 //
 // make the assertions pass
@@ -74,7 +74,7 @@ assert.equal(d + (b + c), "hawaii-1")
 // START
 let sum = 0
 for (let i = 1; i <= 10; i++) {
-  sum = sum + i
+  sum = sum + i // not sure if what you wanted, but no need to redeclare
 }
 // END
 assert.equal(sum, 55)
@@ -86,7 +86,7 @@ assert.equal(sum, 55)
 
 let result = []
 //START
-for (let i of [1,2,3,4]) {
+for (let i of [1,2,3,4]) { // of; not in
 // END
   result.push(3*i)
 }
@@ -109,7 +109,7 @@ let populations = {
 let total = 0
 for (let city in populations) {
   //START
-  total += populations[city]
+  total += populations[city] // find value with key in object 'populations'
   // END
 }
 assert.equal(total, 25_145_561)
@@ -121,7 +121,7 @@ assert.equal(total, 25_145_561)
 let count = 0
 function nextLabel(label) {
   // START
-  return `${label}-${count++}`
+  return `${label}-${count++}` // simply returning the label and count++
   // END
 }
 
@@ -130,7 +130,7 @@ assert.equal(nextLabel("entry"), "entry-1")
 assert.equal(nextLabel("entry"), "entry-2")
 assert.equal(nextLabel("exit"),  "exit-3")
 
-if (false) { // move me down to the next section when the one above is complete
+
 ///////////////// Section 6 ///////////////////////////////////////////
 //
 // The problem with `nextLabel` is that it uses a global
@@ -142,7 +142,10 @@ if (false) { // move me down to the next section when the one above is complete
 
 function labelMaker(label) {
   // START
-  // ...
+  let count = 0;
+  return function(){ // returns function that increments count within scope
+    return `${label}-${count++}`
+  }
   // END
 }
 
@@ -154,6 +157,7 @@ assert.equal(nextEntryLabel(), "entry-1")
 assert.equal(nextExitLabel(),  "exit-0")
 assert.equal(nextEntryLabel(), "entry-2")
 assert.equal(nextExitLabel(),  "exit-1")
+
 
 ///////////////// Section 7 ///////////////////////////////////////////
 //
@@ -173,12 +177,18 @@ assert.equal(nextExitLabel(),  "exit-1")
 
 function labelMaker1(label) {
   // START
-  // ...
+  let count = 0
+  return function(inputVal){
+    if(Number.isInteger(inputVal)) // same as before, but simply check
+      count = inputVal             // if there is an integer input to redeclare
+    return `${label}-${count++}`   // the count.
+  }
   // END
 }
 
 let nextEntryLabel1 = labelMaker1("entry")
 let nextExitLabel1  = labelMaker1("exit")
+
 
 assert.equal(nextEntryLabel1(),   "entry-0")
 assert.equal(nextEntryLabel1(),   "entry-1")
@@ -189,4 +199,4 @@ assert.equal(nextExitLabel1(),    "exit-201")
 assert.equal(nextExitLabel1(0),   "exit-0")
 assert.equal(nextExitLabel1(),    "exit-1")
 
-}           // end of `if (false)`
+if (false) {} // end of `if (false)`
