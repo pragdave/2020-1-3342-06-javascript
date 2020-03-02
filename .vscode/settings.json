@@ -22,8 +22,5 @@
     "terminal.ansiYellow": "#ffff00",
     "terminalCursor.background": "#000000",
     "terminalCursor.foreground": "#77cc77",
-    "activityBar.background": "#3E2A0A",
-    "titleBar.activeBackground": "#563A0E",
-    "titleBar.activeForeground": "#FDF9F3"
   }
 }
