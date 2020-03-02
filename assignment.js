@@ -1,41 +1,10 @@
-/*
-This assignment is broken into a number of sections. You'll want to get each
-section completed before moving on to the next. To make this easier,
-I've included all but the first section inside
+/*Austin Smith
+Programming Languages CS 3342
+Homework 3 - JavaScript
+March 3rd 2020
 
-  if (false) {
-    section
-    section...
-  }
-
-As you complete a section, move the `if` part of this down past the end of the
-next section, which will then make it live.
-
-  section
-  if (false) {
-    section...
-  }
-
-Most sections have their own short description of the problem. However, there is
-one global rule: you can only change the code in this file that lies between the
-markers
-
-  // START
-
-and
-
-  // END
-
-So, in the following code:
-
-  // START
-  let a = 3
-  let b
-  // END
-  assert.equal(a+b, 8)
-
-You can change the let statements, but not the assert. (My intent here would be
-for you to make the test pass my initializing b to 5.
+This assignment reworks previous code to make all assertions pass.
+It includes 7 sections  and currently results in all tests passing.
 */
 
 const assert = require('assert').strict   // ignore these two. they just
