@@ -75,6 +75,7 @@ assert.equal(d + (b + c), "hawaii-1")
 let sum = 0
 for (let i = 1; i <= 10; i++) {
   sum = sum + i
+  //deleted "let" to stop re-declaring
 }
 // END
 assert.equal(sum, 55)
@@ -86,7 +87,7 @@ assert.equal(sum, 55)
 
 let result = []
 //START
-for (let i of [1,2,3,4]) {
+for (let i of [1,2,3,4]) {  //changed 'in' to 'of' to access values instead of index
 // END
   result.push(3*i)
 }
@@ -111,7 +112,7 @@ let populations = {
 let total = 0
 for (let city in  populations) {
   //START
-  total += populations[city]
+  total += populations[city]  //using brackets to access the values
   // END
 }
 assert.equal(total, 25_145_561)
@@ -124,10 +125,10 @@ assert.equal(total, 25_145_561)
 let count = 0
 function nextLabel(label) {
   // START
-  let result = 0;
-  result = label + "-" + count
-  count++
-  return result
+  let result = 0; //initializing result to 0 
+  result = label + "-" + count //formating the correct label
+  count++ //incrementing count by 1
+  return result //returning the correct label
   // END
 }
 
@@ -148,13 +149,13 @@ assert.equal(nextLabel("exit"),  "exit-3")
 
 function labelMaker(label) {
   // START
-  let count = 0
-  let result = 0
-  return function()
+  let count = 0 //initializing count to 0
+  let result = 0  //initializing result to 0
+  return function() //function with no parameters
   {
-    result = label + "-" + count
-    count++
-    return result
+    result = label + "-" + count  //formating to the correct label
+    count++ //incrementing count by 1
+    return result //returning desired label
   }
   // END
 }
@@ -186,19 +187,19 @@ assert.equal(nextExitLabel(),  "exit-1")
 
 function labelMaker1(label) {
   // START
-  let count = -1
-  let result = 0
+  let count = -1  //initializing count to -1 so it starts label at 0
+  let result = 0  //initializing count to 0
   return function(para)
   {
-    if (para == undefined){
-      count ++
+    if (para == undefined){ //no parameters have been passed
+      count ++ //so count is incremented by 1
     } 
-    else{
-      count = para;
+    else{ //parameter has been passed
+      count = para; //count equals the parameter (or number) we want in the correct lab
     }
 
-    result = label + "-" + count
-    return result
+    result = label + "-" + count //formatting to the correct label
+    return result //returing desired label
   }
   // END
 }
