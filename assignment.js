@@ -148,7 +148,12 @@ assert.equal(nextLabel("exit"),  "exit-3")
 
 function labelMaker(label) {
   // START
-  
+  var count = 0 // count of each label
+
+  return function getCounts(){ //returns function
+    count++ //increments count for a specific label
+    return label + "-" + (count-1)
+  }
   // END
 }
 
@@ -161,7 +166,7 @@ assert.equal(nextExitLabel(),  "exit-0")
 assert.equal(nextEntryLabel(), "entry-2")
 assert.equal(nextExitLabel(),  "exit-1")
 
-if (false) { // move me down to the next section when the one above is complete
+
 
 ///////////////// Section 7 ///////////////////////////////////////////
 //
@@ -179,9 +184,17 @@ if (false) { // move me down to the next section when the one above is complete
 // they don't pass it when you call that function, the parameter
 //  will have the value `undefined`
 
-function labelMaker1(label) {
+function labelMaker1(label, newCount) {
   // START
-  // ...
+  var count = 0 // count of each label
+
+  return function getCounts(newCount){ //returns function
+    count++ //increments count for a specific label
+    if(newCount != undefined) // if newCount is defined then the count is set to this new value
+      count = newCount + 1 // Adds one to counteract the subtraction in the following line
+    return label + "-" + (count-1)
+      
+  }
   // END
 }
 
@@ -196,5 +209,7 @@ assert.equal(nextEntryLabel1(),   "entry-100")
 assert.equal(nextExitLabel1(),    "exit-201")
 assert.equal(nextExitLabel1(0),   "exit-0")
 assert.equal(nextExitLabel1(),    "exit-1")
+
+if (false) { // move me down to the next section when the one above is complete
 
 }           // end of `if (false)`
