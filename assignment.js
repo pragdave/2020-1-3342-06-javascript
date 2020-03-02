@@ -199,8 +199,3 @@ assert.equal(nextEntryLabel1(),   "entry-100")
 assert.equal(nextExitLabel1(),    "exit-201")
 assert.equal(nextExitLabel1(0),   "exit-0")
 assert.equal(nextExitLabel1(),    "exit-1")
-
-
-if (false) { // move me down to the next section when the one above is complete
-
-}           // end of `if (false)`
