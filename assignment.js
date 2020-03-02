@@ -47,11 +47,11 @@ Error.stackTraceLimit = 2                 // set up the environment
 
 let a = 5
 // START
-let b
-let c
-let d
-let e
-let f
+let b = 10
+let c = -11
+let d = "hawaii"
+let e = 99
+let f = 0
 // END
 
 assert.equal(a + b, 15)
@@ -62,10 +62,10 @@ assert.equal(d + a + f, "hawaii50")
 
 // add parentheses to the first parameter to make this pass
 // START
-assert.equal(d + b + c, "hawaii-1")
+assert.equal(d + (b + c), "hawaii-1")
 //
 
-if (false) { // move me down to the next section when the one above is complete
+
 
 ///////////////// Section 2 ///////////////////////////////////////////
 //
@@ -74,7 +74,7 @@ if (false) { // move me down to the next section when the one above is complete
 // START
 let sum = 0
 for (let i = 1; i <= 10; i++) {
-  let sum = sum + i
+  sum = sum + i
 }
 // END
 assert.equal(sum, 55)
@@ -86,7 +86,7 @@ assert.equal(sum, 55)
 
 let result = []
 //START
-for (let i in [1,2,3,4]) {
+for (let i of [1,2,3,4]) {
 // END
   result.push(3*i)
 }
@@ -111,7 +111,7 @@ let populations = {
 let total = 0
 for (let city in  populations) {
   //START
-  total += populations.city
+  total += populations[city]
   // END
 }
 assert.equal(total, 25_145_561)
@@ -124,7 +124,10 @@ assert.equal(total, 25_145_561)
 let count = 0
 function nextLabel(label) {
   // START
-  // ...
+  let result = 0;
+  result = label + "-" + count
+  count++
+  return result
   // END
 }
 
@@ -145,7 +148,14 @@ assert.equal(nextLabel("exit"),  "exit-3")
 
 function labelMaker(label) {
   // START
-  // ...
+  let count = 0
+  let result = 0
+  return function()
+  {
+    result = label + "-" + count
+    count++
+    return result
+  }
   // END
 }
 
@@ -176,7 +186,20 @@ assert.equal(nextExitLabel(),  "exit-1")
 
 function labelMaker1(label) {
   // START
-  // ...
+  let count = -1
+  let result = 0
+  return function(para)
+  {
+    if (para == undefined){
+      count ++
+    } 
+    else{
+      count = para;
+    }
+
+    result = label + "-" + count
+    return result
+  }
   // END
 }
 
@@ -192,4 +215,5 @@ assert.equal(nextExitLabel1(),    "exit-201")
 assert.equal(nextExitLabel1(0),   "exit-0")
 assert.equal(nextExitLabel1(),    "exit-1")
 
+if (false) { // move me down to the next section when the one above is complete
 }           // end of `if (false)`
