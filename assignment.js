@@ -116,8 +116,6 @@ for (let city in  populations) {
 }
 assert.equal(total, 25_145_561)
 
-if (false) { // move me down to the next section when the one above is complete
-
 
 ///////////////// Section 5 ///////////////////////////////////////////
 //
@@ -126,7 +124,9 @@ if (false) { // move me down to the next section when the one above is complete
 let count = 0
 function nextLabel(label) {
   // START
-  // ...
+  label = label + "-" + count
+  count += 1
+  return label
   // END
 }
 
@@ -134,7 +134,6 @@ assert.equal(nextLabel("entry"), "entry-0")
 assert.equal(nextLabel("entry"), "entry-1")
 assert.equal(nextLabel("entry"), "entry-2")
 assert.equal(nextLabel("exit"),  "exit-3")
-
 
 ///////////////// Section 6 ///////////////////////////////////////////
 //
@@ -147,8 +146,13 @@ assert.equal(nextLabel("exit"),  "exit-3")
 
 function labelMaker(label) {
   // START
-  // ...
-  // END
+  var count = 0
+  return function() {
+    let lab = label + "-" + count
+    count += 1
+    return lab
+  }
+   // END
 }
 
 let nextEntryLabel = labelMaker("entry")
@@ -159,6 +163,7 @@ assert.equal(nextEntryLabel(), "entry-1")
 assert.equal(nextExitLabel(),  "exit-0")
 assert.equal(nextEntryLabel(), "entry-2")
 assert.equal(nextExitLabel(),  "exit-1")
+
 
 ///////////////// Section 7 ///////////////////////////////////////////
 //
@@ -178,7 +183,21 @@ assert.equal(nextExitLabel(),  "exit-1")
 
 function labelMaker1(label) {
   // START
-  // ...
+  var count = 0
+  return function(num) {
+    let lab = 0
+    if(num == undefined){
+      lab = label + "-" + count
+      count += 1
+    }
+    else
+    {
+      lab = label + "-" + num
+      count = num + 1
+    }
+
+    return lab
+  }
   // END
 }
 
@@ -193,5 +212,7 @@ assert.equal(nextEntryLabel1(),   "entry-100")
 assert.equal(nextExitLabel1(),    "exit-201")
 assert.equal(nextExitLabel1(0),   "exit-0")
 assert.equal(nextExitLabel1(),    "exit-1")
+
+if (false) { // move me down to the next section when the one above is complete
 
 }           // end of `if (false)`
