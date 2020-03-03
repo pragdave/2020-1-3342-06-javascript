@@ -122,9 +122,7 @@ assert.equal(total, 25_145_561)
 let count = 0
 function nextLabel(label) {
   // START
-  label = label + "-" + count
-  count = count +1
-  return label
+  return label + "-" + (count++)
   // END
 }
 
@@ -133,21 +131,25 @@ assert.equal(nextLabel("entry"), "entry-1")
 assert.equal(nextLabel("entry"), "entry-2")
 assert.equal(nextLabel("exit"),  "exit-3")
 
-if (false) { // move me down to the next section when the one above is complete
+
 
 ///////////////// Section 6 ///////////////////////////////////////////
 //
 // The problem with `nextLabel` is that it uses a global
 // variable for the count, so no matter which label you
 // pass in, you'll always increment the same count.
-//
+
 // Fix that by writing a function that generates
 // a new function for each label to be seauenced
 
 function labelMaker(label) {
   // START
-  // ...
-  // END
+  var count = 0
+  
+  return function plus(){
+    return label + "-" + (count++)
+  }
+   
 }
 
 let nextEntryLabel = labelMaker("entry")
@@ -158,6 +160,8 @@ assert.equal(nextEntryLabel(), "entry-1")
 assert.equal(nextExitLabel(),  "exit-0")
 assert.equal(nextEntryLabel(), "entry-2")
 assert.equal(nextExitLabel(),  "exit-1")
+
+
 
 ///////////////// Section 7 ///////////////////////////////////////////
 //
@@ -177,7 +181,20 @@ assert.equal(nextExitLabel(),  "exit-1")
 
 function labelMaker1(label) {
   // START
-  // ...
+  var count = 0
+
+  return function plus(num) {
+    if(num == undefined) 
+    {
+      return label + "-" + (count++)
+    }
+    else
+    {
+      count = num
+      return label + "-" + (count++)
+    }
+  }
+
   // END
 }
 
@@ -193,4 +210,6 @@ assert.equal(nextExitLabel1(),    "exit-201")
 assert.equal(nextExitLabel1(0),   "exit-0")
 assert.equal(nextExitLabel1(),    "exit-1")
 
-}           // end of `if (false)`
+if (false) { // move me down to the next section when the one above is complete
+}          
+ // end of `if (false)`
