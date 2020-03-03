@@ -100,12 +100,12 @@ assert.deepEqual(result, [3,6,9,12])
 // fix the body of the loop
 
 let populations = {
-  houston:     2099451,
-  san_antonio: 1327407,
-  dallas:      1197816,
-  austin:        790390,
-  fort_worth:    741206,
-  rest:       18989291,
+  houston:     2_099_451,
+  san_antonio: 1_327_407,
+  dallas:      1_197_816,
+  austin:        790_390,
+  fort_worth:    741_206,
+  rest:       18_989_291,
 }
 
 let total = 0
@@ -114,7 +114,7 @@ for (let city in  populations) {
   total += populations[city]
   // END
 }
-assert.equal(total, 25145561)
+assert.equal(total, 25_145_561)
 
 
 ///////////////// Section 5 ///////////////////////////////////////////
