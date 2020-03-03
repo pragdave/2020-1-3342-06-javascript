@@ -47,11 +47,11 @@ Error.stackTraceLimit = 2                 // set up the environment
 
 let a = 5
 // START
-let b = 10
-let c = -11
-let d = "hawaii"
-let e = 99
-let f = 0
+let b = 10 //as seen in the first assign it has to be 15 - 5 = 10
+let c = -11 //as seen in the second assign it has to be -10 - 1 = -11
+let d = "hawaii" //as seen in the third assign, it has to be hawaii
+let e = 99 //as seen in fourth assign, it has to be 99
+let f = 0 //as seen in the fifth assign, it has to be the 0 after ther 5
 // END
 
 assert.equal(a + b, 15)
@@ -65,7 +65,7 @@ assert.equal(d + a + f, "hawaii50")
 assert.equal(d + (b + c), "hawaii-1")
 //
 
-
+if (false) { // move me down to the next section when the one above is complete
 
 ///////////////// Section 2 ///////////////////////////////////////////
 //
@@ -80,7 +80,7 @@ for (let i = 1; i <= 10; i++) {
 assert.equal(sum,55)
 
 
-if (false) { // move me down to the next section when the one above is complete
+
 ///////////////// Section 3 ///////////////////////////////////////////
 //
 // fix the `for` line of this code
