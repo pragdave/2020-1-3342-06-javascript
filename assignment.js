@@ -1,4 +1,9 @@
 /*
+
+-Fidelia Nawar
+-CS3342 JavaScript HW
+-2/3/20
+
 This assignment is broken into a number of sections. You'll want to get each
 section completed before moving on to the next. To make this easier,
 I've included all but the first section inside
@@ -65,12 +70,9 @@ assert.equal(d + a + f, "hawaii50")
 assert.equal(d + (b + c), "hawaii-1")
 //
 
-
 ///////////////// Section 2 ///////////////////////////////////////////
 //
 // fix the declation(s) in this code (but continue to use let)
-
-
 
 // START
 let sum = 0
@@ -78,6 +80,7 @@ for (let i = 1; i <= 10; i++) {
   sum = sum + i
 }
 // END
+
 assert.equal(sum, 55)
 
 ///////////////// Section 3 ///////////////////////////////////////////
@@ -86,13 +89,12 @@ assert.equal(sum, 55)
 
 let result = []
 //START
-for (let i = 1; i <=4; i++) {
+for (var i of [1,2,3,4]) {
 // END
   result.push(3*i)
 }
 
 assert.deepEqual(result, [3,6,9,12])
-
 
 
 ///////////////// Section 4 ///////////////////////////////////////////
@@ -124,17 +126,12 @@ assert.equal(total, 25_145_561)
 let count = 0
 function nextLabel(label) {
   // START
-    label = label + "-" + count;
+    let res = label + "-" + count;
     count++
-    return label
+    return res
     
   // END
 }
-// nextLabel("entry")
-// nextLabel("entry")
-// nextLabel("entry")
-// nextLabel("exit")
-var assert = require('assert')
 
 assert.equal(nextLabel("entry"), "entry-0")
 assert.equal(nextLabel("entry"), "entry-1")
@@ -154,9 +151,8 @@ assert.equal(nextLabel("exit"),  "exit-3")
 function labelMaker(label) {
   // START
    let count = 0;
-   let result = 0;
    return function(){
-     result = label + "-" + count
+     let result = label + "-" + count
      count++
      return result
    }
@@ -165,7 +161,6 @@ function labelMaker(label) {
 let nextEntryLabel = labelMaker("entry")
 let nextExitLabel  = labelMaker("exit")
 
-var assert = require('assert')
 assert.equal(nextEntryLabel(), "entry-0")
 assert.equal(nextEntryLabel(), "entry-1")
 assert.equal(nextExitLabel(),  "exit-0")
@@ -190,7 +185,18 @@ assert.equal(nextExitLabel(),  "exit-1")
 
 function labelMaker1(label) {
   // START
-  // ...
+  let res = 0
+  let count = -1
+  return function(parameter){
+    if(parameter != undefined){
+      count = parameter
+    }
+    else{
+      count++
+    }
+    res = label + "-" + count
+    return res
+  }
   // END
 }
 
@@ -206,4 +212,3 @@ assert.equal(nextExitLabel1(),    "exit-201")
 assert.equal(nextExitLabel1(0),   "exit-0")
 assert.equal(nextExitLabel1(),    "exit-1")
 
-}           // end of `if (false)`
