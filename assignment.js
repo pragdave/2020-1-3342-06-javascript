@@ -120,11 +120,14 @@ assert.equal(total, 25_145_561)
 ///////////////// Section 5 ///////////////////////////////////////////
 //
 // write the body of the following function
-if (false) {
+
 let count = 0
 function nextLabel(label) {
   // START
   // ...
+  label += "-" + count
+  count ++
+  return label
   // END
 }
 
@@ -133,7 +136,7 @@ assert.equal(nextLabel("entry"), "entry-1")
 assert.equal(nextLabel("entry"), "entry-2")
 assert.equal(nextLabel("exit"),  "exit-3")
 
-
+if (false) {
 ///////////////// Section 6 ///////////////////////////////////////////
 //
 // The problem with `nextLabel` is that it uses a global
