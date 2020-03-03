@@ -1,3 +1,8 @@
+/*  
+Name: John Park
+ID:   446 88 167
+*/
+
 /*
 This assignment is broken into a number of sections. You'll want to get each
 section completed before moving on to the next. To make this easier,
@@ -62,7 +67,7 @@ assert.equal(d + a + f, "hawaii50")
 
 // add parentheses to the first parameter to make this pass
 // START
-assert.equal(d + (b + c), "hawaii-1")
+assert.equal(d + (b + c), "hawaii-1") // isolate number addition
 //
 
 ///////////////// Section 2 ///////////////////////////////////////////
@@ -103,9 +108,9 @@ let populations = {
 }
 
 let total = 0
-for (let city in  populations) {
+for (let city in populations) {
   //START
-  total += populations[city]
+  total += populations[city]      // access value, update total
   // END
 }
 assert.equal(total, 25_145_561)
@@ -117,7 +122,7 @@ assert.equal(total, 25_145_561)
 let count = 0
 function nextLabel(label) {
   // START
-  return label + "-" + count++
+  return label + "-" + count++  // increment after return
   // END
 }
 
@@ -137,8 +142,8 @@ assert.equal(nextLabel("exit"),  "exit-3")
 
 function labelMaker(label) {
   // START
-  let count = 0;                      // closure of label & count
-  return () => label + "-" + count++
+  let count = 0
+  return () => label + "-" + count++  // closure of label & count
   // END
 }
 
@@ -169,10 +174,10 @@ assert.equal(nextExitLabel(),  "exit-1")
 
 function labelMaker1(label) {
   // START
-  let count = 0;                  // closure of label & count
-  return (num) => {               // can re-assign count
-    if(!isNaN(num)) {
-      count = num
+  let count = 0
+  return (optParam) => {          // optional parameter to
+    if(optParam != undefined) {   // re-assign count
+      count = optParam
     }
     return label + "-" + count++
   }
