@@ -71,8 +71,8 @@ assert.equal(d + (b + c), "hawaii-1")
 
 // START
 let sum = 0
-for (let i = 1; i <= 10; i++) {
-   sum = sum + i
+for (let i = 1; i <= 10; i++) { 
+   sum = sum + i //increases sum by index
 }
 // END
 assert.equal(sum, 55)
@@ -83,7 +83,7 @@ assert.equal(sum, 55)
 
 let result = []
 //START
-for (let i of [1,2,3,4]) { 
+for (let i of [1,2,3,4]) { //of iterates through the indeces
 // END
   result.push(3*i)
 }
@@ -105,7 +105,7 @@ let populations = {
 let total = 0
 for (let city in  populations) {
   //START
-  total += populations[city]
+  total += populations[city] //changed syntax so accessing city index
   // END
 }
 assert.equal(total, 25_145_561)
@@ -117,8 +117,9 @@ assert.equal(total, 25_145_561)
 let count = 0
 function nextLabel(label) {
   // START
-  let counter = count
+  let counter = count //temp variable so count isn't reset by return
   count++
+  
   return label + "-" + counter
   // END
 }
@@ -139,11 +140,12 @@ assert.equal(nextLabel("exit"),  "exit-3")
 
 function labelMaker(label) {
   // START
-  let num = 0
-  let sentence = null
+  let num = 0 //maintains numerical count
+  let sentence = null //temp variable so num isn't reset by returning
   return function(){
     sentence = label + "-" + num
     num++
+
     return sentence
   }
   // END
@@ -179,11 +181,14 @@ function labelMaker1(label) {
   let num = 0
   let sentence = null
   return function(x){
-    if(x != undefined){
+
+    if(x != undefined){ //checks if parameter has been passed
       num = x
     }
+
     sentence = label + "-" + num
     num++
+
     return sentence
   }
   // END
