@@ -94,27 +94,27 @@ assert.deepEqual(result, [3,6,9,12])
 
 
 
-if (false) {
+
 ///////////////// Section 4 ///////////////////////////////////////////
 //
 // fix the body of the loop
-/*
+
 let populations = {
-  houston:     2_099_451,
-  san_antonio: 1_327_407,
-  dallas:      1_197_816,
-  austin:        790_390,
-  fort_worth:    741_206,
-  rest:       18_989_291,
+  houston:     2099451,
+  san_antonio: 1327407,
+  dallas:      1197816,
+  austin:        790390,
+  fort_worth:    741206,
+  rest:       18989291,
 }
-*/
+
 let total = 0
 for (let city in  populations) {
   //START
-  total += populations.city
+  total += populations[city]
   // END
 }
-//assert.equal(total, 25_145_561)
+assert.equal(total, 25145561)
 
 
 ///////////////// Section 5 ///////////////////////////////////////////
@@ -124,7 +124,9 @@ for (let city in  populations) {
 let count = 0
 function nextLabel(label) {
   // START
-  // ...
+  label += '-' + count
+  count++
+  return label
   // END
 }
 
@@ -145,7 +147,12 @@ assert.equal(nextLabel("exit"),  "exit-3")
 
 function labelMaker(label) {
   // START
-  // ...
+  let count = 0
+  return function (){
+  let l = label + '-' + count
+  count++  
+  return l
+  }
   // END
 }
 
@@ -176,7 +183,15 @@ assert.equal(nextExitLabel(),  "exit-1")
 
 function labelMaker1(label) {
   // START
-  // ...
+  let count = 0
+  return function(c){
+    if(c != null){
+      count = c
+    }
+  let l = label + '-' + count
+  count++  
+  return l
+  }
   // END
 }
 
@@ -191,5 +206,5 @@ assert.equal(nextEntryLabel1(),   "entry-100")
 assert.equal(nextExitLabel1(),    "exit-201")
 assert.equal(nextExitLabel1(0),   "exit-0")
 assert.equal(nextExitLabel1(),    "exit-1")
-
+if (false) {
 }           // end of `if (false)`
