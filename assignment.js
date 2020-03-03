@@ -89,7 +89,7 @@ assert.equal(sum, 55)
 
 let result = []
 //START
-for (var i of [1,2,3,4]) {
+for (var i of [1,2,3,4]) { //change in to of
 // END
   result.push(3*i)
 }
@@ -113,7 +113,7 @@ let populations = {
 let total = 0
 for (let city in populations) {
   //START
-  total += populations[city]
+  total += populations[city] //change to brackets
   // END
 }
 assert.equal(total, 25_145_561)
@@ -126,7 +126,7 @@ assert.equal(total, 25_145_561)
 let count = 0
 function nextLabel(label) {
   // START
-    let res = label + "-" + count;
+    let res = label + "-" + count; //format label to return 
     count++
     return res
     
@@ -152,7 +152,7 @@ function labelMaker(label) {
   // START
    let count = 0;
    return function(){
-     let result = label + "-" + count
+     let result = label + "-" + count //put answer from 5 in return function
      count++
      return result
    }
@@ -188,13 +188,13 @@ function labelMaker1(label) {
   let res = 0
   let count = -1
   return function(parameter){
-    if(parameter != undefined){
-      count = parameter
+    if(parameter != undefined){ //no param passed
+      count = parameter //if undef, assign count to param
     }
-    else{
-      count++
+    else{ //param is not undef (param passed)
+      count++ //increment count by 1
     }
-    res = label + "-" + count
+    res = label + "-" + count //format label to return
     return res
   }
   // END
