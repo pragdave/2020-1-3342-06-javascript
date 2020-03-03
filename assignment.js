@@ -134,7 +134,7 @@ assert.equal(nextLabel("entry"), "entry-2")
 assert.equal(nextLabel("exit"),  "exit-3")
 
 
-if (false) { // move me down to the next section when the one above is complete
+
 ///////////////// Section 6 ///////////////////////////////////////////
 //
 // The problem with `nextLabel` is that it uses a global
@@ -142,12 +142,13 @@ if (false) { // move me down to the next section when the one above is complete
 // pass in, you'll always increment the same count.
 //
 // Fix that by writing a function that generates
-// a new function for each label to be seauenced
+// a new function for each label to be sequenced
 
 function labelMaker(label) {
-  // START
-  // ...
-  // END
+  let count = 0
+  return function(){
+    return(label + "-" + count++)
+  }
 }
 
 let nextEntryLabel = labelMaker("entry")
@@ -159,6 +160,7 @@ assert.equal(nextExitLabel(),  "exit-0")
 assert.equal(nextEntryLabel(), "entry-2")
 assert.equal(nextExitLabel(),  "exit-1")
 
+if (false) { // move me down to the next section when the one above is complete
 ///////////////// Section 7 ///////////////////////////////////////////
 //
 // The client likes your labelMaker function,
