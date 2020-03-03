@@ -47,11 +47,11 @@ Error.stackTraceLimit = 2                 // set up the environment
 
 let a = 5
 // START
-let b
-let c
-let d
-let e
-let f
+let b = 10
+let c = -11
+let d = "hawaii"
+let e = 99
+let f = 0
 // END
 
 assert.equal(a + b, 15)
@@ -62,23 +62,23 @@ assert.equal(d + a + f, "hawaii50")
 
 // add parentheses to the first parameter to make this pass
 // START
-assert.equal(d + b + c, "hawaii-1")
+assert.equal(d + (b + c), "hawaii-1")
 //
 
-if (false) { // move me down to the next section when the one above is complete
+// move me down to the next section when the one above is complete
 
 ///////////////// Section 2 ///////////////////////////////////////////
 //
-// fix the declation(s) in this code (but continue to use let)
+// fix the declaration(s) in this code (but continue to use let)
 
 // START
+
 let sum = 0
 for (let i = 1; i <= 10; i++) {
-  let sum = sum + i
+  sum = sum + i
 }
 // END
 assert.equal(sum, 55)
-
 
 ///////////////// Section 3 ///////////////////////////////////////////
 //
@@ -86,14 +86,11 @@ assert.equal(sum, 55)
 
 let result = []
 //START
-for (let i in [1,2,3,4]) {
+for (let i of [1,2,3,4]) {
 // END
   result.push(3*i)
 }
 assert.deepEqual(result, [3,6,9,12])
-
-
-
 
 ///////////////// Section 4 ///////////////////////////////////////////
 //
@@ -111,11 +108,10 @@ let populations = {
 let total = 0
 for (let city in  populations) {
   //START
-  total += populations.city
+  total += populations[city]
   // END
 }
 assert.equal(total, 25_145_561)
-
 
 ///////////////// Section 5 ///////////////////////////////////////////
 //
@@ -124,7 +120,9 @@ assert.equal(total, 25_145_561)
 let count = 0
 function nextLabel(label) {
   // START
-  // ...
+  let concat = label + '-' + count
+  count += 1
+  return concat
   // END
 }
 
@@ -133,7 +131,6 @@ assert.equal(nextLabel("entry"), "entry-1")
 assert.equal(nextLabel("entry"), "entry-2")
 assert.equal(nextLabel("exit"),  "exit-3")
 
-
 ///////////////// Section 6 ///////////////////////////////////////////
 //
 // The problem with `nextLabel` is that it uses a global
@@ -141,11 +138,16 @@ assert.equal(nextLabel("exit"),  "exit-3")
 // pass in, you'll always increment the same count.
 //
 // Fix that by writing a function that generates
-// a new function for each label to be seauenced
+// a new function for each label to be sequenced
 
 function labelMaker(label) {
   // START
-  // ...
+  let count = 0
+  return function(){
+    let final = label + '-' + count
+    count += 1
+    return final
+  }
   // END
 }
 
@@ -158,6 +160,7 @@ assert.equal(nextExitLabel(),  "exit-0")
 assert.equal(nextEntryLabel(), "entry-2")
 assert.equal(nextExitLabel(),  "exit-1")
 
+//if (false) {
 ///////////////// Section 7 ///////////////////////////////////////////
 //
 // The client likes your labelMaker function,
@@ -172,11 +175,20 @@ assert.equal(nextExitLabel(),  "exit-1")
 // However, the client is not totally psychotic. They tell you
 // that if you write a function that receives a parameter, but
 // they don't pass it when you call that function, the parameter
-//  will have the value `undefined`
+// will have the value `undefined`
 
 function labelMaker1(label) {
   // START
-  // ...
+  let count = 0
+  var final
+  return function(value){
+    if(value || value === 0){
+      count = value;
+    }
+    let final = label + '-' + count
+    count += 1
+    return final
+  }
   // END
 }
 
@@ -192,4 +204,4 @@ assert.equal(nextExitLabel1(),    "exit-201")
 assert.equal(nextExitLabel1(0),   "exit-0")
 assert.equal(nextExitLabel1(),    "exit-1")
 
-}           // end of `if (false)`
+//}           // end of `if (false)`
