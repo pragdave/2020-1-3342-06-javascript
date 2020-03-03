@@ -47,11 +47,11 @@ Error.stackTraceLimit = 2                 // set up the environment
 
 let a = 5
 // START
-let b = 10        // a + b = 15
-let c = -11       // b + c = -1
-let d = "hawaii"  // d + a = "hawaii" + 5
-let e = 99        // e + d + a = 99 + "hawaii" + 5
-let f = 0         // d + a + f = "hawaii" + 5 + 0 
+let b = 10
+let c = -11
+let d = "hawaii" 
+let e = 99 
+let f = 0
 // END
 
 assert.equal(a + b, 15)
@@ -83,7 +83,7 @@ assert.equal(sum, 55)
 
 let result = []
 //START
-for (let i of [1,2,3,4]) { // for every element of an iterable
+for (let i of [1,2,3,4]) {
 // END
   result.push(3*i)
 }
@@ -105,7 +105,7 @@ let populations = {
 let total = 0
 for (let city in  populations) {
   //START
-  total += populations[city] // access every value by key and update total
+  total += populations[city]
   // END
 }
 assert.equal(total, 25_145_561)
@@ -117,7 +117,7 @@ assert.equal(total, 25_145_561)
 let count = 0
 function nextLabel(label) {
   // START
-  return label + "-" + count++ // print then increment count
+  return label + "-" + count++
   // END
 }
 
@@ -137,7 +137,7 @@ assert.equal(nextLabel("exit"),  "exit-3")
 
 function labelMaker(label) {
   // START
-  let count = 0;
+  let count = 0;                      // closure of label & count
   return () => label + "-" + count++
   // END
 }
@@ -169,9 +169,11 @@ assert.equal(nextExitLabel(),  "exit-1")
 
 function labelMaker1(label) {
   // START
-  let count = 0;
-  return (num) => {
-    if(!isNaN(num)) count = num  // if num is a Number, update count
+  let count = 0;                  // closure of label & count
+  return (num) => {               // can re-assign count
+    if(!isNaN(num)) {
+      count = num
+    }
     return label + "-" + count++
   }
   // END
@@ -189,5 +191,5 @@ assert.equal(nextExitLabel1(),    "exit-201")
 assert.equal(nextExitLabel1(0),   "exit-0")
 assert.equal(nextExitLabel1(),    "exit-1")
 
-if (false) { // move me down to the next section when the one above is complete
-}           // end of `if (false)`
+//if (false) { // move me down to the next section when the one above is complete
+//}           // end of `if (false)`
