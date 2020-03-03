@@ -126,10 +126,9 @@ assert.equal(total, 25_145_561)
 let count = 0
 function nextLabel(label) {
   // START
-    let res = label + "-" + count; //format label to return 
+    let res = label + "-" + count; //format label to return
     count++
     return res
-    
   // END
 }
 
