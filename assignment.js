@@ -124,9 +124,7 @@ assert.equal(total, 25_145_561)
 let count = 0
 function nextLabel(label) {
   // START
-  let newLabel = label + "-" + count
-  count++
-  return newLabel
+  return label + "-" + count++
   // END
 }
 
@@ -149,9 +147,7 @@ function labelMaker(label) {
   // START
   let count = 0
   return function() {
-    let newLabel = label + "-" + count
-    count++
-    return newLabel
+    return label + "-" + count++
   }
   // END
 }
@@ -189,9 +185,7 @@ function labelMaker1(label) {
       count = num
     }
    
-    let newLabel = label + "-" + count
-    count++
-    return newLabel
+    return label + "-" + count++
   }
   // END
 }
