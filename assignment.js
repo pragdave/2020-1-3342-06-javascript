@@ -47,11 +47,11 @@ Error.stackTraceLimit = 2                 // set up the environment
 
 let a = 5
 // START
-let b
-let c
-let d
-let e
-let f
+let b = 10
+let c = -11
+let d = "hawaii"
+let e = 99
+let f = 0
 // END
 
 assert.equal(a + b, 15)
@@ -62,10 +62,10 @@ assert.equal(d + a + f, "hawaii50")
 
 // add parentheses to the first parameter to make this pass
 // START
-assert.equal(d + b + c, "hawaii-1")
+assert.equal(d + (b + c), "hawaii-1")
 //
 
-if (false) { // move me down to the next section when the one above is complete
+
 
 ///////////////// Section 2 ///////////////////////////////////////////
 //
@@ -74,12 +74,13 @@ if (false) { // move me down to the next section when the one above is complete
 // START
 let sum = 0
 for (let i = 1; i <= 10; i++) {
-  let sum = sum + i
+  sum = sum + i
 }
 // END
-assert.equal(sum, 55)
+assert.equal(sum,55)
 
 
+if (false) { // move me down to the next section when the one above is complete
 ///////////////// Section 3 ///////////////////////////////////////////
 //
 // fix the `for` line of this code
