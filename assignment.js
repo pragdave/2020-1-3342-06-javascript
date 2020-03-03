@@ -30,7 +30,7 @@ So, in the following code:
 
   // START
   let a = 3
-  let b
+  let b = 5
   // END
   assert.equal(a+b, 8)
 
@@ -47,11 +47,11 @@ Error.stackTraceLimit = 2                 // set up the environment
 
 let a = 5
 // START
-let b
-let c
-let d
-let e
-let f
+let b = 10
+let c = -11
+let d = "hawaii"
+let e = 99
+let f = 0
 // END
 
 assert.equal(a + b, 15)
@@ -62,10 +62,10 @@ assert.equal(d + a + f, "hawaii50")
 
 // add parentheses to the first parameter to make this pass
 // START
-assert.equal(d + b + c, "hawaii-1")
+assert.equal(d + (b + c), "hawaii-1")
 //
 
-if (false) { // move me down to the next section when the one above is complete
+ // move me down to the next section when the one above is complete
 
 ///////////////// Section 2 ///////////////////////////////////////////
 //
@@ -74,7 +74,7 @@ if (false) { // move me down to the next section when the one above is complete
 // START
 let sum = 0
 for (let i = 1; i <= 10; i++) {
-  let sum = sum + i
+  sum += i
 }
 // END
 assert.equal(sum, 55)
@@ -86,7 +86,8 @@ assert.equal(sum, 55)
 
 let result = []
 //START
-for (let i in [1,2,3,4]) {
+for (let i = 1; i <= 4; i++)
+{
 // END
   result.push(3*i)
 }
@@ -107,11 +108,11 @@ let populations = {
   fort_worth:    741_206,
   rest:       18_989_291,
 }
-
 let total = 0
-for (let city in  populations) {
+for (let key in populations) {
   //START
-  total += populations.city
+  total += populations[key]
+  //populations.nextEntryLabel
   // END
 }
 assert.equal(total, 25_145_561)
@@ -126,6 +127,10 @@ function nextLabel(label) {
   // START
   // ...
   // END
+  label = label + "-" + count
+  count++
+  return label
+  
 }
 
 assert.equal(nextLabel("entry"), "entry-0")
@@ -147,6 +152,12 @@ function labelMaker(label) {
   // START
   // ...
   // END
+  let count = 0
+  return function() {
+    label2 = label + "-" + count
+    count++
+    return label2
+  }
 }
 
 let nextEntryLabel = labelMaker("entry")
@@ -157,6 +168,7 @@ assert.equal(nextEntryLabel(), "entry-1")
 assert.equal(nextExitLabel(),  "exit-0")
 assert.equal(nextEntryLabel(), "entry-2")
 assert.equal(nextExitLabel(),  "exit-1")
+
 
 ///////////////// Section 7 ///////////////////////////////////////////
 //
@@ -178,6 +190,20 @@ function labelMaker1(label) {
   // START
   // ...
   // END
+  let count = 0
+  return function(num) {
+    if(num == undefined)
+    {
+      label2 = label + "-" + count
+      count++
+      return label2
+    }
+      count = num
+      label2 = label + "-" + count
+      count++
+      return label2
+    
+  }
 }
 
 let nextEntryLabel1 = labelMaker1("entry")
@@ -192,4 +218,4 @@ assert.equal(nextExitLabel1(),    "exit-201")
 assert.equal(nextExitLabel1(0),   "exit-0")
 assert.equal(nextExitLabel1(),    "exit-1")
 
-}           // end of `if (false)`
+           // end of `if (false)`
