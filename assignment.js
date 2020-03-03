@@ -85,14 +85,13 @@ assert.equal(sum, 55)
 
 let result = []
 //START
-for (let i in [1,2,3,4]) {
+for (let i of [1,2,3,4]) {
 // END
   result.push(3*i)
 }
 assert.deepEqual(result, [3,6,9,12])
 
 
-if (false) { // move me down to the next section when the one above is complete
 
 ///////////////// Section 4 ///////////////////////////////////////////
 //
@@ -110,7 +109,7 @@ let populations = {
 let total = 0
 for (let city in  populations) {
   //START
-  total += populations.city
+  total = total + populations[city]
   // END
 }
 assert.equal(total, 25_145_561)
@@ -123,7 +122,9 @@ assert.equal(total, 25_145_561)
 let count = 0
 function nextLabel(label) {
   // START
-  // ...
+  label = label + "-" + count
+  count = count +1
+  return label
   // END
 }
 
@@ -132,6 +133,7 @@ assert.equal(nextLabel("entry"), "entry-1")
 assert.equal(nextLabel("entry"), "entry-2")
 assert.equal(nextLabel("exit"),  "exit-3")
 
+if (false) { // move me down to the next section when the one above is complete
 
 ///////////////// Section 6 ///////////////////////////////////////////
 //
