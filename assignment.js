@@ -76,24 +76,23 @@ let sum = 0
 for (let i = 1; i <= 10; i++) {
   sum += i
 }
-console.log(sum)
 // END
 assert.equal(sum, 55)
 
-if (false) {
+
 ///////////////// Section 3 ///////////////////////////////////////////
 //
 // fix the `for` line of this code
 
 let result = []
 //START
-for (let i in [1,2,3,4]) {
+for (let i of [1,2,3,4]) {
 // END
   result.push(3*i)
 }
 assert.deepEqual(result, [3,6,9,12])
 
-
+if (false) {
 
 
 ///////////////// Section 4 ///////////////////////////////////////////
