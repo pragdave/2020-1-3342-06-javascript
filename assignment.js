@@ -119,7 +119,8 @@ assert.equal(total, 25_145_561)
 let count = 0
 function nextLabel(label) {
   // START
-  return label+"-"+count++
+  //increment count after returning label
+  return label+"-"+count++ 
   // END
 }
 
@@ -142,6 +143,7 @@ assert.equal(nextLabel("exit"),  "exit-3")
 function labelMaker(label) {
   // START
   // ...
+  //use closure to retain count value in separate calls by same function
   let count = 0
   return function() {
     return newLabel = label + "-" + count++ 
@@ -177,13 +179,12 @@ assert.equal(nextExitLabel(),  "exit-1")
 
 function labelMaker1(label) {
   // START
-  // ...
   let count = 0
-  return function(num) {
+  return function(num) { //takes in parameter in case specified value
     if (num != undefined) {
-      count = num
+      count = num //set count to num if specified value
     }
-    return newLabel = label + "-" + count++ 
+    return label + "-" + count++ 
   }
   // END
 }
