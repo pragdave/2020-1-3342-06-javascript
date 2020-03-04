@@ -167,14 +167,13 @@ function labelMaker(label) {
 let nextEntryLabel = labelMaker("entry")
 let nextExitLabel  = labelMaker("exit")
 
-
 assert.equal(nextEntryLabel(), "entry-0")
 assert.equal(nextEntryLabel(), "entry-1")
 assert.equal(nextExitLabel(),  "exit-0")
 assert.equal(nextEntryLabel(), "entry-2")
 assert.equal(nextExitLabel(),  "exit-1")
 
-if (false) {
+
 ///////////////// Section 7 ///////////////////////////////////////////
 //
 // The client likes your labelMaker function,
@@ -190,10 +189,31 @@ if (false) {
 // that if you write a function that receives a parameter, but
 // they don't pass it when you call that function, the parameter
 //  will have the value `undefined`
-
-function labelMaker1(label) {
+count1 =0;
+count2 =0;
+function labelMaker1(label){
   // START
   // ...
+    // ... 
+    label += '-'
+    return function(x = -1){
+     if(label == "entry-"){
+       if(x != -1){
+         count1 = x
+       }
+
+       count1++
+       return label + (count1-1)
+     }
+     else{
+       if(x != -1){
+         count2 = x
+       }
+
+       count2++
+       return label + (count2-1)
+     }
+    }
   // END
 }
 
@@ -208,5 +228,5 @@ assert.equal(nextEntryLabel1(),   "entry-100")
 assert.equal(nextExitLabel1(),    "exit-201")
 assert.equal(nextExitLabel1(0),   "exit-0")
 assert.equal(nextExitLabel1(),    "exit-1")
-
+if (false) {
 }           // end of `if (false)`
