@@ -172,7 +172,6 @@ assert.equal(nextExitLabel(),  "exit-1")
 
 //SECTION COMPLETE - LJH
 
-if (false) { // move me down to the next section when the one above is complete
 
 ///////////////// Section 7 ///////////////////////////////////////////
 //
@@ -192,7 +191,15 @@ if (false) { // move me down to the next section when the one above is complete
 
 function labelMaker1(label) {
   // START
-  // ...
+    let count = 0
+    return function(newCount){
+      if (newCount == undefined){
+        return(label + "-" + count++)
+      } else {
+        count = newCount;
+        return(label + "-" + count++)
+      }
+    }
   // END
 }
 
@@ -208,4 +215,7 @@ assert.equal(nextExitLabel1(),    "exit-201")
 assert.equal(nextExitLabel1(0),   "exit-0")
 assert.equal(nextExitLabel1(),    "exit-1")
 
+//SECTION COMPLETE - LJH
+
+if (false) { // move me down to the next section when the one above is complete
 }           // end of `if (false)`
