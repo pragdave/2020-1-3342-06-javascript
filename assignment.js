@@ -78,7 +78,7 @@ for (let i = 1; i <= 10; i++) {
 // END
 assert.equal(sum, 55)
 
-/*
+
 ///////////////// Section 3 ///////////////////////////////////////////
 //
 // fix the `for` line of this code
@@ -100,7 +100,7 @@ for (let i of [1,2,3,4]) {
   result.push(3*i)
 }
 assert.equal(result, [3,6,9,12])
-*/
+
 
 
 
