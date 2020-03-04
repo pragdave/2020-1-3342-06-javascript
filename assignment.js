@@ -93,7 +93,6 @@ assert.deepEqual(result, [3,6,9,12])
 
 
 
-if (false) { // move me down to the next section when the one above is complete
 
 
 ///////////////// Section 4 ///////////////////////////////////////////
@@ -112,7 +111,7 @@ let populations = {
 let total = 0
 for (let city in  populations) {
   //START
-  total += populations.city
+  total += populations[city]
   // END
 }
 assert.equal(total, 25_145_561)
@@ -125,7 +124,7 @@ assert.equal(total, 25_145_561)
 let count = 0
 function nextLabel(label) {
   // START
-  // ...
+  return label + "-" + count++;
   // END
 }
 
@@ -146,7 +145,10 @@ assert.equal(nextLabel("exit"),  "exit-3")
 
 function labelMaker(label) {
   // START
-  // ...
+  let count = 0;
+  return function(){
+    return label + "-" + count++;
+  }
   // END
 }
 
@@ -158,6 +160,9 @@ assert.equal(nextEntryLabel(), "entry-1")
 assert.equal(nextExitLabel(),  "exit-0")
 assert.equal(nextEntryLabel(), "entry-2")
 assert.equal(nextExitLabel(),  "exit-1")
+
+
+
 
 ///////////////// Section 7 ///////////////////////////////////////////
 //
@@ -193,4 +198,5 @@ assert.equal(nextExitLabel1(),    "exit-201")
 assert.equal(nextExitLabel1(0),   "exit-0")
 assert.equal(nextExitLabel1(),    "exit-1")
 
+if (false) { // move me down to the next section when the one above is complete
 }           // end of `if (false)`
