@@ -136,7 +136,7 @@ assert.equal(nextLabel("entry"), "entry-1")
 assert.equal(nextLabel("entry"), "entry-2")
 assert.equal(nextLabel("exit"),  "exit-3")
 
-if (false) {
+
 ///////////////// Section 6 ///////////////////////////////////////////
 //
 // The problem with `nextLabel` is that it uses a global
@@ -145,15 +145,28 @@ if (false) {
 //
 // Fix that by writing a function that generates
 // a new function for each label to be seauenced
-
+count1 = 0;
+count2 = 0;
 function labelMaker(label) {
   // START
-  // ...
+  // ... 
+  label += '-'
+   return function(){
+    if(label == "entry-"){
+      count1++;
+      return label + (count1-1)
+    }
+    else{
+      count2++
+      return label + (count2-1)
+    }
+   }
   // END
 }
 
 let nextEntryLabel = labelMaker("entry")
 let nextExitLabel  = labelMaker("exit")
+
 
 assert.equal(nextEntryLabel(), "entry-0")
 assert.equal(nextEntryLabel(), "entry-1")
@@ -161,6 +174,7 @@ assert.equal(nextExitLabel(),  "exit-0")
 assert.equal(nextEntryLabel(), "entry-2")
 assert.equal(nextExitLabel(),  "exit-1")
 
+if (false) {
 ///////////////// Section 7 ///////////////////////////////////////////
 //
 // The client likes your labelMaker function,
