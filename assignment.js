@@ -86,7 +86,7 @@ assert.equal(sum, 55)
 
 let result = []
 //START
-for (let i in [1,2,3,4]) {
+for (let i of [1,2,3,4]) {
 // END
   result.push(3*i)
 }
@@ -196,7 +196,51 @@ assert.equal(nextExitLabel(),  "exit-1")
 
 function labelMaker1(label) {
   // START
-  // ...
+  let entryCount = 0
+  let exitCount = 0
+  let boolVal = false
+
+  if(label = "entry"){
+    let boolResult = paramTest(nextEntryLabel)
+    if(boolResult = true)
+      nextEntryLabel1(hasNum)
+    else
+      nextEntryLabel()
+  }
+  else{
+    let boolResult = paramTest(nextEntryLabel)
+    if(boolResult = true)
+      nextEntryLabel1(hasNum)
+    else
+      nextEntryLabel()
+  }
+
+  function nextEntryLabel1(){
+    return label + "-" + entryCount
+    entryCount++
+  }
+    
+  function nextEntryLevel1(num){
+    return label + "-" + num
+    entryCount = num
+  }
+
+  function nextExitLabel(){
+    return label + "-" + count
+    exitCount++
+  }
+
+  function nextExitLabel1(num){
+    return label + "-" + num
+    exitCOunt++
+  }
+
+  function paramTest(bool){
+    if(bool != undefined)
+      let boolVal = true
+    else
+      let boolVal = false
+  }
   // END
 }
 
