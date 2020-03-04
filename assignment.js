@@ -41,17 +41,19 @@ for you to make the test pass my initializing b to 5.
 const assert = require('assert').strict   // ignore these two. they just
 Error.stackTraceLimit = 2                 // set up the environment
 
+if (false) { // move me down to the next section when the one above is complete
+}
 ///////////////// Section 1 ///////////////////////////////////////////
 //
 // make the assertions pass
 
 let a = 5
 // START
-let b
-let c
-let d
-let e
-let f
+let b = 10
+let c = -11
+let d = "hawaii"
+let e = 99
+let f = 0
 // END
 
 assert.equal(a + b, 15)
@@ -60,12 +62,11 @@ assert.equal(d + a, "hawaii5")
 assert.equal(e + d + a, "99hawaii5")
 assert.equal(d + a + f, "hawaii50")
 
-// add parentheses to the first parameter to make this pass
-// START
-assert.equal(d + b + c, "hawaii-1")
+// // add parentheses to the first parameter to make this pass
+// // START
+assert.equal(d + (b + c), "hawaii-1")
 //
 
-if (false) { // move me down to the next section when the one above is complete
 
 ///////////////// Section 2 ///////////////////////////////////////////
 //
@@ -74,10 +75,12 @@ if (false) { // move me down to the next section when the one above is complete
 // START
 let sum = 0
 for (let i = 1; i <= 10; i++) {
-  let sum = sum + i
+  sum = sum + i
 }
 // END
 assert.equal(sum, 55)
+
+
 
 
 ///////////////// Section 3 ///////////////////////////////////////////
@@ -86,36 +89,35 @@ assert.equal(sum, 55)
 
 let result = []
 //START
-for (let i in [1,2,3,4]) {
-// END
-  result.push(3*i)
+let arr = [1, 2, 3, 4]
+for (let i in arr) {
+  i = arr[i]
+  // END
+  
+  result.push(3 * i)
 }
-assert.deepEqual(result, [3,6,9,12])
-
-
-
+assert.deepEqual(result, [3, 6, 9, 12])
 
 ///////////////// Section 4 ///////////////////////////////////////////
 //
 // fix the body of the loop
 
 let populations = {
-  houston:     2_099_451,
-  san_antonio: 1_327_407,
-  dallas:      1_197_816,
-  austin:        790_390,
-  fort_worth:    741_206,
-  rest:       18_989_291,
+  houston:     2099451,
+  san_antonio: 1327407,
+  dallas:      1197816,
+  austin:        790390,
+  fort_worth:    741206,
+  rest:       18989291,
 }
 
 let total = 0
 for (let city in  populations) {
   //START
-  total += populations.city
+  total +=populations[city]
   // END
 }
-assert.equal(total, 25_145_561)
-
+assert.equal(total, 25145561)
 
 ///////////////// Section 5 ///////////////////////////////////////////
 //
@@ -124,7 +126,9 @@ assert.equal(total, 25_145_561)
 let count = 0
 function nextLabel(label) {
   // START
-  // ...
+   let result = label + "-" + count
+   count++
+   return result
   // END
 }
 
@@ -145,7 +149,12 @@ assert.equal(nextLabel("exit"),  "exit-3")
 
 function labelMaker(label) {
   // START
-  // ...
+  let count = 0;
+  return function() {
+    let result = label + "-" + count
+    count++
+    return result
+  }
   // END
 }
 
@@ -157,6 +166,8 @@ assert.equal(nextEntryLabel(), "entry-1")
 assert.equal(nextExitLabel(),  "exit-0")
 assert.equal(nextEntryLabel(), "entry-2")
 assert.equal(nextExitLabel(),  "exit-1")
+
+
 
 ///////////////// Section 7 ///////////////////////////////////////////
 //
@@ -176,7 +187,15 @@ assert.equal(nextExitLabel(),  "exit-1")
 
 function labelMaker1(label) {
   // START
-  // ...
+  let count = 0;
+  return function(number) {
+    if (number !== undefined) {
+      count = number;
+    }
+    let result = label + "-" + count
+    count++
+    return result
+  }
   // END
 }
 
@@ -192,4 +211,6 @@ assert.equal(nextExitLabel1(),    "exit-201")
 assert.equal(nextExitLabel1(0),   "exit-0")
 assert.equal(nextExitLabel1(),    "exit-1")
 
-}           // end of `if (false)`
+if(false){
+  
+}
