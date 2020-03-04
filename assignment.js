@@ -124,7 +124,6 @@ assert.equal(total, 25_145_561)
 let count = 0
 function nextLabel(label) {
   // START
-  // ...
   label += "-" + count
   count ++
   return label
@@ -149,7 +148,6 @@ count1 = 0;
 count2 = 0;
 function labelMaker(label) {
   // START
-  // ... 
   label += '-'
    return function(){
     if(label == "entry-"){
