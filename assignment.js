@@ -78,7 +78,7 @@ for (let i = 1; i <= 10; i++) {
 // END
 assert.equal(sum, 55)
 
-/*
+
 ///////////////// Section 3 ///////////////////////////////////////////
 //
 // fix the `for` line of this code
@@ -86,21 +86,12 @@ assert.equal(sum, 55)
 
 let result = []
 //START
-//this should work but is not due to this error
-//AssertionError [ERR_ASSERTION]: Values have same structure but are not reference-equal:
-//[
-//  3,
-//  6,
-//  9,
-//  12
-//]
-
 for (let i of [1,2,3,4]) {
 // END
   result.push(3*i)
 }
-assert.equal(result, [3,6,9,12])
-*/
+assert.deepEqual(result, [3,6,9,12])
+
 
 
 
