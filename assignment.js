@@ -124,7 +124,10 @@ assert.equal(total, 25_145_561)
 let count = 0
 function nextLabel(label) {
   // START
-  // ...
+  for(let next of list){
+    return label + "-" + count
+    count++
+  }
   // END
 }
 
@@ -145,7 +148,24 @@ assert.equal(nextLabel("exit"),  "exit-3")
 
 function labelMaker(label) {
   // START
-  // ...
+  let entryCount = 0
+  let exitCount = 0
+
+  if(label = "entry")
+    nextEntryLabel()
+  else
+    nextExitLabel()
+
+  function nextEntryLabel(){
+    return label + "-" + entryCount
+    entryCount++
+  }
+    
+  function nextExitLabel(){
+    return label + "-" + count
+    exitCount = 0
+  }
+  
   // END
 }
 
