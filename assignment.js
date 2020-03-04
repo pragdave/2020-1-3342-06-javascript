@@ -162,8 +162,6 @@ assert.equal(nextEntryLabel(), "entry-2")
 assert.equal(nextExitLabel(),  "exit-1")
 
 
-
-
 ///////////////// Section 7 ///////////////////////////////////////////
 //
 // The client likes your labelMaker function,
@@ -182,7 +180,16 @@ assert.equal(nextExitLabel(),  "exit-1")
 
 function labelMaker1(label) {
   // START
-  // ...
+  let count = 0;
+  return function(msg){
+    if(msg == undefined){
+      return label + "-" + count++;
+    }
+    else{
+      count = msg;
+      return label + "-" + count++; 
+    }
+  }
   // END
 }
 
