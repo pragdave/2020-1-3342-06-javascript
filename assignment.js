@@ -124,10 +124,8 @@ assert.equal(total, 25_145_561)
 let count = 0
 function nextLabel(label) {
   // START
-  for(let next of list){
-    return label + "-" + count
-    count++
-  }
+  return label + "-" + count
+  count++
   // END
 }
 
@@ -151,21 +149,18 @@ function labelMaker(label) {
   let entryCount = 0
   let exitCount = 0
 
-  if(label = "entry")
-    nextEntryLabel()
-  else
-    nextExitLabel()
-
-  function nextEntryLabel(){
-    return label + "-" + entryCount
-    entryCount++
+  if(label = "entry"){
+    function(){
+      return label + "-" + entryCount
+      entryCount++
+    }
   }
-    
-  function nextExitLabel(){
-    return label + "-" + count
-    exitCount = 0
-  }
-  
+  else{
+    function(){
+      return label + "-" + count
+      exitCount = 0
+    }
+  } 
   // END
 }
 
@@ -226,13 +221,13 @@ function labelMaker1(label) {
   }
 
   function nextExitLabel(){
-    return label + "-" + count
+    return label + "-" + ExitCount
     exitCount++
   }
 
   function nextExitLabel1(num){
     return label + "-" + num
-    exitCOunt++
+    exitCount++
   }
 
   function paramTest(bool){
