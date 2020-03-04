@@ -78,20 +78,29 @@ for (let i = 1; i <= 10; i++) {
 // END
 assert.equal(sum, 55)
 
-if (false) { // move me down to the next section when the one above is complete
-
+/*
 ///////////////// Section 3 ///////////////////////////////////////////
 //
 // fix the `for` line of this code
 
+
 let result = []
 //START
-for (let i in [1,2,3,4]) {
+//this should work but is not due to this error
+//AssertionError [ERR_ASSERTION]: Values have same structure but are not reference-equal:
+//[
+//  3,
+//  6,
+//  9,
+//  12
+//]
+
+for (let i of [1,2,3,4]) {
 // END
   result.push(3*i)
 }
 assert.equal(result, [3,6,9,12])
-
+*/
 
 
 
@@ -109,9 +118,9 @@ let populations = {
 }
 
 let total = 0
-for (let city in  populations) {
+for (let city in populations) {
   //START
-  total += populations.city
+  total += populations[city]
   // END
 }
 assert.equal(total, 25_145_561)
@@ -124,7 +133,9 @@ assert.equal(total, 25_145_561)
 let count = 0
 function nextLabel(label) {
   // START
-  // ...
+  let lab = label+"-"+count
+  count++
+  return lab
   // END
 }
 
@@ -145,7 +156,13 @@ assert.equal(nextLabel("exit"),  "exit-3")
 
 function labelMaker(label) {
   // START
-  // ...
+  let count=0
+  let lab = label
+  return function(){
+    let newLabel = lab+"-"+count
+    count++
+    return newLabel
+  }
   // END
 }
 
@@ -157,6 +174,7 @@ assert.equal(nextEntryLabel(), "entry-1")
 assert.equal(nextExitLabel(),  "exit-0")
 assert.equal(nextEntryLabel(), "entry-2")
 assert.equal(nextExitLabel(),  "exit-1")
+
 
 ///////////////// Section 7 ///////////////////////////////////////////
 //
@@ -176,7 +194,20 @@ assert.equal(nextExitLabel(),  "exit-1")
 
 function labelMaker1(label) {
   // START
-  // ...
+  let count=0
+  let lab = label
+  return function(newCount){
+    if(newCount==undefined){
+      let newLabel = lab+"-"+count
+      count++
+      return newLabel
+    }else{
+      count = newCount
+      let newLabel = lab+"-"+count
+      count++
+      return newLabel
+    }
+  }
   // END
 }
 
@@ -191,5 +222,6 @@ assert.equal(nextEntryLabel1(),   "entry-100")
 assert.equal(nextExitLabel1(),    "exit-201")
 assert.equal(nextExitLabel1(0),   "exit-0")
 assert.equal(nextExitLabel1(),    "exit-1")
+if (false) { // move me down to the next section when the one above is complete
 
 }           // end of `if (false)`
