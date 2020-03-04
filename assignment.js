@@ -142,7 +142,7 @@ assert.equal(nextLabel("exit"),  "exit-3")
 //
 // Fix that by writing a function that generates
 // a new function for each label to be seauenced
-/*
+
 function labelMaker(label) {
   // START
   if (typeof entryCount === 'undefined' && label == "entry"){
@@ -171,7 +171,7 @@ assert.equal(nextEntryLabel(), "entry-1")
 assert.equal(nextExitLabel(),  "exit-0")
 assert.equal(nextEntryLabel(), "entry-2")
 assert.equal(nextExitLabel(),  "exit-1")
-*/
+
 ///////////////// Section 7 ///////////////////////////////////////////
 //
 // The client likes your labelMaker function,
