@@ -62,7 +62,7 @@ assert.equal(d + a + f, "hawaii50")
 
 // add parentheses to the first parameter to make this pass
 // START
-assert.equal(d + b + c, "hawaii-1")
+assert.equal(d + (b + c), "hawaii-1")
 //
 
 if (false) { // move me down to the next section when the one above is complete
@@ -111,7 +111,7 @@ let populations = {
 let total = 0
 for (let city in  populations) {
   //START
-  total += populations.city
+  total += populations[city]
   // END
 }
 assert.equal(total, 25_145_561)
